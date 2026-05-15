@@ -141,7 +141,7 @@ const Hero = ({ data }) => {
 
           <div className="hero__stat-cards">
             <div className="hero__stat-card">
-              <span className="hero__stat-num">1.9<span>yrs</span></span>
+              <span className="hero__stat-num">2<span>+ yrs</span></span>
               <span className="hero__stat-label">Experience</span>
             </div>
             <div className="hero__stat-card">

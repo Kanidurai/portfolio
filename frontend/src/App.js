@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { usePortfolio } from './hooks/usePortfolio';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { portfolioData } from './data/portfolioData';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Skills from './components/Skills';
@@ -13,34 +13,7 @@ import ResumePage from './pages/ResumePage';
 import './styles/global.css';
 
 function PortfolioHome() {
-  const { data, loading, error } = usePortfolio();
-
-  if (loading) {
-    return (
-      <div className="loading-screen">
-        <div className="loader" />
-        <p className="loading-text">Loading portfolio...</p>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="error-screen">
-        <h2>Connection Error</h2>
-        <p>
-          Could not connect to the backend API. Please make sure the NestJS server
-          is running on <strong>http://localhost:5000</strong>.
-        </p>
-        <p style={{ marginTop: 8, fontFamily: 'monospace', fontSize: '0.85rem', color: '#f5a623' }}>
-          {error}
-        </p>
-        <button className="btn btn-outline" style={{ marginTop: 20 }} onClick={() => window.location.reload()}>
-          Retry
-        </button>
-      </div>
-    );
-  }
+  const data = portfolioData;
 
   return (
     <>

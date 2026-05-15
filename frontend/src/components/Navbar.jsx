@@ -10,6 +10,8 @@ const NAV_LINKS = [
   { label: 'Contact',     href: '#contact' },
 ];
 
+const CONTACT_EMAIL = 'dkanimozhi.dev@gmail.com';
+
 const Navbar = () => {
   const { isDark, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
@@ -89,7 +91,7 @@ const Navbar = () => {
         {/* CTA */}
         <a
           className="navbar__cta btn btn-primary"
-          href="mailto:kanimozhiduraisamy2002@gmail.com"
+          href={`mailto:${CONTACT_EMAIL}`}
         >
           Hire Me
         </a>
@@ -117,7 +119,7 @@ const Navbar = () => {
         ))}
         <a
           className="btn btn-primary"
-          href="mailto:kanimozhiduraisamy2002@gmail.com"
+          href={`mailto:${CONTACT_EMAIL}`}
           style={{ marginTop: '8px', justifyContent: 'center' }}
         >
           Hire Me

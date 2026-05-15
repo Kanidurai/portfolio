@@ -1,135 +1,48 @@
-# Kanimozhi D — Portfolio Web Application
+# Kanimozhi D Portfolio
 
-A full-stack portfolio built with **React** (frontend) and **NestJS** (backend).
+A frontend-only static portfolio built with React.
 
----
+## Project Structure
 
-## 📁 Project Structure
-
-```
+```text
 portfolio/
-├── backend/          # NestJS API server
+├── frontend/
+│   ├── public/
+│   │   ├── index.html
+│   │   ├── resume.html
+│   │   └── resume.pdf
 │   ├── src/
-│   │   ├── modules/
-│   │   │   ├── portfolio/   # Portfolio data (skills, projects, experience...)
-│   │   │   └── contact/     # Contact form API
-│   │   ├── dto/             # Data Transfer Objects with validation
-│   │   ├── app.module.ts
-│   │   └── main.ts
-│   ├── .env
+│   │   ├── components/
+│   │   ├── contexts/
+│   │   ├── data/
+│   │   ├── pages/
+│   │   ├── styles/
+│   │   ├── App.js
+│   │   └── index.js
 │   └── package.json
-│
-└── frontend/         # React UI
-    ├── src/
-    │   ├── components/      # Navbar, Hero, Skills, Projects, Experience, Contact, Footer
-    │   ├── hooks/           # usePortfolio custom hook
-    │   ├── services/        # Axios API service layer
-    │   └── styles/          # Global CSS design system
-    ├── public/
-    ├── .env
-    └── package.json
+├── README.md
+└── start.sh
 ```
 
----
-
-## ⚡ Quick Start
-
-### Prerequisites
-- **Node.js** v18+ — https://nodejs.org
-- **npm** v9+
-
----
-
-### 1 — Clone / extract and navigate
-
-```bash
-cd portfolio
-```
-
----
-
-### 2 — Start the Backend (NestJS)
-
-```bash
-cd backend
-npm install
-npm run start:dev
-```
-
-Backend runs at → **http://localhost:5000**
-
-Available API routes:
-| Method | Route | Description |
-|--------|-------|-------------|
-| GET | /api/portfolio | All portfolio data |
-| GET | /api/portfolio/about | About & contact info |
-| GET | /api/portfolio/skills | Technical skills |
-| GET | /api/portfolio/experience | Work experience |
-| GET | /api/portfolio/projects | All projects |
-| GET | /api/portfolio/projects/:id | Single project |
-| GET | /api/portfolio/education | Education |
-| GET | /api/portfolio/certifications | Certifications |
-| POST | /api/contact | Submit contact message |
-| GET | /api/contact/count | Message count |
-
----
-
-### 3 — Start the Frontend (React)
-
-Open a **new terminal tab**:
+## Quick Start
 
 ```bash
 cd frontend
 npm install
-npm start
+npm run dev
 ```
 
-Frontend runs at → **http://localhost:3000**
+The site runs at `http://localhost:3000`.
 
----
+## Build
 
-### 4 — Open in Browser
-
-Visit **http://localhost:3000** 🎉
-
----
-
-## 🔧 Environment Variables
-
-### Backend (`backend/.env`)
-```
-PORT=5000
-FRONTEND_URL=http://localhost:3000
-NODE_ENV=development
+```bash
+cd frontend
+npm run build
 ```
 
-### Frontend (`frontend/.env`)
-```
-REACT_APP_API_URL=http://localhost:5000/api
-```
+## Notes
 
----
-
-## 📮 Contact Form
-
-The contact form at `/api/contact` accepts:
-```json
-{
-  "name": "string (2–100 chars)",
-  "email": "valid email",
-  "subject": "string (3–200 chars)",
-  "message": "string (10–2000 chars)"
-}
-```
-
-Messages are stored in-memory (restart clears them). To persist, swap the in-memory store in `backend/src/modules/contact/contact.service.ts` for a database of your choice (MongoDB, PostgreSQL, etc.).
-
----
-
-## 🎨 Design
-
-- **Dark editorial theme** with amber (`#f5a623`) accents
-- **Fonts**: Syne (headings), Outfit (body), JetBrains Mono (code)
-- **Fully responsive** — mobile-first
-- **Smooth animations**: fade-in, typewriter, hover micro-interactions
-- **Sections**: Hero/About · Skills · Projects · Experience · Contact
+- Portfolio content is stored in `frontend/src/data/portfolioData.js`.
+- There is no backend, API service, authentication, database, or environment-based API configuration.
+- The existing UI, animations, layout, routing, and responsive behavior are kept in the React frontend.

@@ -15,7 +15,7 @@ const Footer = ({ about }) => {
         </div>
 
         <p className="footer__copy">
-          © {new Date().getFullYear()} Kanimozhi D · Built with React & NestJS
+          © {new Date().getFullYear()} Kanimozhi D · Built with React
         </p>
 
         <div className="footer__socials">
