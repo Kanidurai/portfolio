@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import './Navbar.css';
+import { useNavigate } from 'react-router-dom';
 
 const NAV_LINKS = [
   { label: 'About',       href: '#about' },
   { label: 'Skills',      href: '#skills' },
   { label: 'Projects',    href: '#projects' },
-  { label: 'Experience',  href: '#experience' },
-  { label: 'Contact',     href: '#contact' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Contact', href: '#contact' },
+  { label: 'Resume', href: '/resume' },
 ];
 
 const CONTACT_EMAIL = 'dkanimozhi.dev@gmail.com';
 
 const Navbar = () => {
   const { isDark, toggleTheme } = useTheme();
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState('');
@@ -39,8 +42,16 @@ const Navbar = () => {
 
   const handleNavClick = (href) => {
     setMenuOpen(false);
-    const id = href.replace('#', '');
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+
+    if (href === "/resume") {
+      navigate("/resume");
+      return;
+    }
+
+    const id = href.replace("#", "");
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -58,7 +69,12 @@ const Navbar = () => {
           {NAV_LINKS.map(({ label, href }) => (
             <li key={label}>
               <button
-                className={`navbar__link ${active === href.replace('#', '') ? 'navbar__link--active' : ''}`}
+                className={`navbar__link ${href.startsWith('#')
+                    ? active === href.replace('#', '')
+                      ? 'navbar__link--active'
+                      : ''
+                    : ''
+                  }`}
                 onClick={() => handleNavClick(href)}
               >
                 {label}

@@ -4,9 +4,13 @@ import './ResumePage.css';
 
 const ResumePage = () => {
   const navigate = useNavigate();
-  const publicUrl = process.env.PUBLIC_URL || '';
-  const resumePdfUrl = `${publicUrl}/resume.pdf`;
+  // const publicUrl = process.env.PUBLIC_URL || '';
+  // const resumePdfUrl = `${publicUrl}/resume.pdf`;
 
+  const resumePdfUrl = `${window.location.origin}/${encodeURIComponent(
+  "Kanimozhi resume.pdf"
+  )}`;
+  
   const handleFullscreen = () => {
     const viewer = document.querySelector('.resume-viewer');
 
@@ -45,7 +49,7 @@ const ResumePage = () => {
               </svg>
               Fullscreen
             </button>
-            <a className="resume-btn resume-btn-secondary" href={resumePdfUrl} target="_blank" rel="noreferrer">
+            <a className="resume-btn resume-btn-secondary" href={resumePdfUrl} target="_blank" rel="noopener noreferrer">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
                 <path d="M15 3h6v6" />

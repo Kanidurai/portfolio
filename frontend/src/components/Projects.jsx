@@ -34,7 +34,11 @@ const ProjectCard = ({ project, index }) => {
       </div>
 
       {/* Expandable contributions */}
-      <div className={`project-card__contributions ${expanded ? 'project-card__contributions--open' : ''}`}>
+      <div
+        id={`project-contributions-${project.id}`}
+        className={`project-card__contributions ${expanded ? 'project-card__contributions--open' : ''
+          }`}
+      >
         <ul>
           {project.contributions.map((c, i) => (
             <li key={i}>
@@ -48,6 +52,13 @@ const ProjectCard = ({ project, index }) => {
       <button
         className="project-card__toggle"
         onClick={() => setExpanded(!expanded)}
+        aria-expanded={expanded}
+        aria-controls={`project-contributions-${project.id}`}
+        aria-label={
+          expanded
+            ? `Hide contributions for ${project.name}`
+            : `View contributions for ${project.name}`
+        }
       >
         {expanded ? 'Hide details' : 'View contributions'}
         <svg
